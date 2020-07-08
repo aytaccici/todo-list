@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demo Admin{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mt-4">
+            {% for developer_key, weeks_program in calendar %}
+
+                <h2>{{ developer_key }} PROGRAMS </h2>
+
+                    {% for week_key, program in weeks_program %}
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="text-center bg-info" colspan="4"> {{ developer_key  }} - {{  week_key }} PROGRAM </th>
+                            </tr>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">TITLE</th>
+                                <th scope="col">DURATION</th>
+                                <th scope="col">LEVEL</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for  day_program in program %}
+                                <tr>
+                                    <td >{{ day_program['id'] }}</td>
+                                    <td >{{ day_program['title'] }}</td>
+                                    <td >{{ day_program['duration'] }}</td>
+                                    <td >{{ day_program['level'] }}</td>
+                                </tr>
+
+                            {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    {% endfor %}
+
+            {% endfor %}
+
+
+
+
+
+    </div>
+</div>
+{% endblock %}
